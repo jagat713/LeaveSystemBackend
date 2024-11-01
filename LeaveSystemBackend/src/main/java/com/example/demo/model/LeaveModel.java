@@ -30,83 +30,96 @@ public class LeaveModel {
 
     @Column(name = "team_leader_id") // Maps to the 'team_leader_id' column
     private String teamLeaderId;
+    
+    @Column(name = "leave_status",nullable = false, columnDefinition = "varchar(255) default 'Pending'")
+    private String leaveStatus;
 
     public LeaveModel() {
         super();
     }
 
-    public LeaveModel(long leaveId, String leaveType, String leaveStart, String leaveEnd, String leaveReason,
-                      String leaveEmployeeId, String teamLeaderId) {
-        super();
-        this.leaveId = leaveId;
-        this.leaveType = leaveType;
-        this.leaveStart = leaveStart;
-        this.leaveEnd = leaveEnd;
-        this.leaveReason = leaveReason;
-        this.leaveEmployeeId = leaveEmployeeId;
-        this.teamLeaderId = teamLeaderId;
-    }
+	public LeaveModel(long leaveId, String leaveType, String leaveStart, String leaveEnd, String leaveReason,
+			String leaveEmployeeId, String teamLeaderId, String leaveStatus) {
+		super();
+		this.leaveId = leaveId;
+		this.leaveType = leaveType;
+		this.leaveStart = leaveStart;
+		this.leaveEnd = leaveEnd;
+		this.leaveReason = leaveReason;
+		this.leaveEmployeeId = leaveEmployeeId;
+		this.teamLeaderId = teamLeaderId;
+		this.leaveStatus = leaveStatus;
+	}
 
-    public long getLeaveId() {
-        return leaveId;
-    }
+	public long getLeaveId() {
+		return leaveId;
+	}
 
-    public void setLeaveId(long leaveId) {
-        this.leaveId = leaveId;
-    }
+	public void setLeaveId(long leaveId) {
+		this.leaveId = leaveId;
+	}
 
-    public String getLeaveType() {
-        return leaveType;
-    }
+	public String getLeaveType() {
+		return leaveType;
+	}
 
-    public void setLeaveType(String leaveType) {
-        this.leaveType = leaveType;
-    }
+	public void setLeaveType(String leaveType) {
+		this.leaveType = leaveType;
+	}
 
-    public String getLeaveStart() {
-        return leaveStart;
-    }
+	public String getLeaveStart() {
+		return leaveStart;
+	}
 
-    public void setLeaveStart(String leaveStart) {
-        this.leaveStart = leaveStart;
-    }
+	public void setLeaveStart(String leaveStart) {
+		this.leaveStart = leaveStart;
+	}
 
-    public String getLeaveEnd() {
-        return leaveEnd;
-    }
+	public String getLeaveEnd() {
+		return leaveEnd;
+	}
 
-    public void setLeaveEnd(String leaveEnd) {
-        this.leaveEnd = leaveEnd;
-    }
+	public void setLeaveEnd(String leaveEnd) {
+		this.leaveEnd = leaveEnd;
+	}
 
-    public String getLeaveReason() {
-        return leaveReason;
-    }
+	public String getLeaveReason() {
+		return leaveReason;
+	}
 
-    public void setLeaveReason(String leaveReason) {
-        this.leaveReason = leaveReason;
-    }
+	public void setLeaveReason(String leaveReason) {
+		this.leaveReason = leaveReason;
+	}
 
-    public String getLeaveEmployeeId() {
-        return leaveEmployeeId;
-    }
+	public String getLeaveEmployeeId() {
+		return leaveEmployeeId;
+	}
 
-    public void setLeaveEmployeeId(String leaveEmployeeId) {
-        this.leaveEmployeeId = leaveEmployeeId;
-    }
+	public void setLeaveEmployeeId(String leaveEmployeeId) {
+		this.leaveEmployeeId = leaveEmployeeId;
+	}
 
-    public String getTeamLeaderId() {
-        return teamLeaderId;
-    }
+	public String getTeamLeaderId() {
+		return teamLeaderId;
+	}
 
-    public void setTeamLeaderId(String teamLeaderId) {
-        this.teamLeaderId = teamLeaderId;
-    }
+	public void setTeamLeaderId(String teamLeaderId) {
+		this.teamLeaderId = teamLeaderId;
+	}
 
-    @Override
-    public String toString() {
-        return "LeaveModel [leaveId=" + leaveId + ", leaveType=" + leaveType + ", leaveStart=" + leaveStart
-                + ", leaveEnd=" + leaveEnd + ", leaveReason=" + leaveReason + ", leaveEmployeeId=" + leaveEmployeeId
-                + ", teamLeaderId=" + teamLeaderId + "]";
-    }
+	public String getLeaveStatus() {
+		return leaveStatus;
+	}
+
+	public void setLeaveStatus(String leaveStatus) {
+		this.leaveStatus = leaveStatus;
+	}
+
+	@Override
+	public String toString() {
+		return "LeaveModel [leaveId=" + leaveId + ", leaveType=" + leaveType + ", leaveStart=" + leaveStart
+				+ ", leaveEnd=" + leaveEnd + ", leaveReason=" + leaveReason + ", leaveEmployeeId=" + leaveEmployeeId
+				+ ", teamLeaderId=" + teamLeaderId + ", leaveStatus=" + leaveStatus + "]";
+	}
+    
 }
