@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +14,6 @@ import com.example.demo.dao.EmployeeDao;
 import com.example.demo.dao.LeaveService;
 import com.example.demo.model.EmployeeModel;
 import com.example.demo.model.LeaveModel;
-
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class EmployeeController {
@@ -51,4 +50,15 @@ public class EmployeeController {
     	System.out.println();
         return leaveService.allLeaves(employeeId);
     }
+    @DeleteMapping("/delete-leave")
+    public boolean deleteLeave(@RequestParam Long leaveId) {
+        try {
+        	String leaveIds=String.valueOf(leaveId);
+            leaveService.deleteLeave(leaveIds);  // Attempt to delete the leave record
+            return true;  // Return true if deletion is successful
+        } catch (Exception e) {
+            e.printStackTrace();  // Log the exception if there's an error
+            return false;  // Return false if an error occurs
+        }
+    } 
 }

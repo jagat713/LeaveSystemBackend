@@ -17,15 +17,12 @@ public class EmployeeModel {
     private String EmployeePassword;
     private String EmployeeLeaveBalance;
     
-    // Add the new field for team leader ID
     private long TeamLeaderId;
 
-    // Default constructor
     public EmployeeModel() {
         super();
     }
 
-    // Constructor with the new TeamLeaderId field
     public EmployeeModel(long employeeId, String employeeName, String employeeRole, String employeeEmail,
                          String employeePassword, String employeeLeaveBalance, long teamLeaderId) {
         super();
@@ -35,10 +32,9 @@ public class EmployeeModel {
         EmployeeEmail = employeeEmail;
         EmployeePassword = employeePassword;
         EmployeeLeaveBalance = employeeLeaveBalance;
-        TeamLeaderId = teamLeaderId;  // Initialize the new field
+        TeamLeaderId = teamLeaderId;
     }
 
-    // Getters and setters
     public long getEmployeeId() {
         return EmployeeId;
     }

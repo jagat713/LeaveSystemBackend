@@ -10,8 +10,7 @@ import com.example.demo.repository.EmployeeRepository;
 
 @Repository
 public class EmployeeDao {
-
-    @Autowired
+	@Autowired
     private EmployeeRepository employeeRepo; // Inject EmployeeRepo bean
 
     public EmployeeModel EmployeeDataFunc(long employeeId) {

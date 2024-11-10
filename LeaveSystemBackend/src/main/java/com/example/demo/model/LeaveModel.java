@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Column;
 
 @Entity
@@ -13,25 +14,26 @@ public class LeaveModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long leaveId;
 
-    @Column(name = "leave_type") // Maps to the 'leave_type' column
+    @Column(name = "leave_type")
     private String leaveType;
 
-    @Column(name = "leave_start") // Maps to the 'leave_start' column
+    @Column(name = "leave_start")
     private String leaveStart;
 
-    @Column(name = "leave_end") // Maps to the 'leave_end' column
+    @Column(name = "leave_end")
     private String leaveEnd;
-
-    @Column(name = "leave_reason") // Maps to the 'leave_reason' column
+    
+    @Column(name = "leave_reason", columnDefinition = "TEXT")
     private String leaveReason;
 
-    @Column(name = "leave_employee_id") // Maps to the 'leave_employee_id' column
+
+    @Column(name = "leave_employee_id")
     private String leaveEmployeeId;
 
-    @Column(name = "team_leader_id") // Maps to the 'team_leader_id' column
+    @Column(name = "team_leader_id")
     private String teamLeaderId;
     
-    @Column(name = "leave_status",nullable = false, columnDefinition = "varchar(255) default 'Pending'")
+    @Column(name = "leave_status", nullable = false, columnDefinition = "VARCHAR(45) DEFAULT 'Pending'")
     private String leaveStatus;
 
     public LeaveModel() {
