@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.Column;
 
 @Entity
@@ -25,8 +24,10 @@ public class LeaveModel {
     
     @Column(name = "leave_reason", columnDefinition = "TEXT")
     private String leaveReason;
-
-
+    
+    @Column(name = "leave_employee_name")
+    private String leaveEmployeeName;
+    
     @Column(name = "leave_employee_id")
     private String leaveEmployeeId;
 
@@ -41,13 +42,14 @@ public class LeaveModel {
     }
 
 	public LeaveModel(long leaveId, String leaveType, String leaveStart, String leaveEnd, String leaveReason,
-			String leaveEmployeeId, String teamLeaderId, String leaveStatus) {
+			String leaveEmployeeName, String leaveEmployeeId, String teamLeaderId, String leaveStatus) {
 		super();
 		this.leaveId = leaveId;
 		this.leaveType = leaveType;
 		this.leaveStart = leaveStart;
 		this.leaveEnd = leaveEnd;
 		this.leaveReason = leaveReason;
+		this.leaveEmployeeName = leaveEmployeeName;
 		this.leaveEmployeeId = leaveEmployeeId;
 		this.teamLeaderId = teamLeaderId;
 		this.leaveStatus = leaveStatus;
@@ -93,6 +95,14 @@ public class LeaveModel {
 		this.leaveReason = leaveReason;
 	}
 
+	public String getLeaveEmployeeName() {
+		return leaveEmployeeName;
+	}
+
+	public void setLeaveEmployeeName(String leaveEmployeeName) {
+		this.leaveEmployeeName = leaveEmployeeName;
+	}
+
 	public String getLeaveEmployeeId() {
 		return leaveEmployeeId;
 	}
@@ -120,8 +130,11 @@ public class LeaveModel {
 	@Override
 	public String toString() {
 		return "LeaveModel [leaveId=" + leaveId + ", leaveType=" + leaveType + ", leaveStart=" + leaveStart
-				+ ", leaveEnd=" + leaveEnd + ", leaveReason=" + leaveReason + ", leaveEmployeeId=" + leaveEmployeeId
-				+ ", teamLeaderId=" + teamLeaderId + ", leaveStatus=" + leaveStatus + "]";
+				+ ", leaveEnd=" + leaveEnd + ", leaveReason=" + leaveReason + ", leaveEmployeeName=" + leaveEmployeeName
+				+ ", leaveEmployeeId=" + leaveEmployeeId + ", teamLeaderId=" + teamLeaderId + ", leaveStatus="
+				+ leaveStatus + "]";
 	}
+    
+    
     
 }

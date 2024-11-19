@@ -11,19 +11,19 @@ import com.example.demo.repository.EmployeeRepository;
 @Repository
 public class EmployeeDao {
 	@Autowired
-    private EmployeeRepository employeeRepo; // Inject EmployeeRepo bean
+    private EmployeeRepository employeeRepo;
 
     public EmployeeModel EmployeeDataFunc(long employeeId) {
-        Optional<EmployeeModel> findData = employeeRepo.findById(employeeId); // Correct variable name and repo usage
+        Optional<EmployeeModel> findData = employeeRepo.findById(employeeId);
         EmployeeModel employee = null;
 
         if (findData.isPresent()) {
-            employee = findData.get(); // Fetch data if present
+            employee = findData.get();
             System.out.println(employee);
         } else {
             System.out.println("ID not Found");
         }
 
-        return employee; // Return the found employee or null
+        return employee;
     }
 }

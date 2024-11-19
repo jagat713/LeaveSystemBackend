@@ -14,51 +14,50 @@ import com.example.demo.dao.EmployeeDao;
 import com.example.demo.dao.LeaveService;
 import com.example.demo.model.EmployeeModel;
 import com.example.demo.model.LeaveModel;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class EmployeeController {
 
     @Autowired
-    private EmployeeDao employeeDao; // Inject EmployeeDao using @Autowired
+    private EmployeeDao employeeDao;
     @Autowired
     private LeaveService leaveService;
 
     @PostMapping("/login")
-    public EmployeeModel EmployeeData(@RequestBody EmployeeModel employee) 
-    {
-        long employeeId = employee.getEmployeeId(); // Assuming EmployeeId is an long
-        EmployeeModel employeeData = employeeDao.EmployeeDataFunc(employeeId); // Get employee data
+    public EmployeeModel EmployeeData(@RequestBody EmployeeModel employee) {
+        long employeeId = employee.getEmployeeId();
+        EmployeeModel employeeData = employeeDao.EmployeeDataFunc(employeeId);
 
-        if (employeeData != null) 
-        {
-            return employeeData; // Return employee data
-        } else 
-        {
-            // Return an empty response or handle the case where the employee ID is not found
+        if (employeeData != null) {
+            return employeeData;
+        } else {
             return null;
         }
     }
+
     @PostMapping("/apply-leave")
     public Boolean ApplyLeave(@RequestBody LeaveModel model) {
-    	System.out.println(model.toString());
-        return leaveService.ApplyLeave(model); // Call the method on the injected service
+        System.out.println(model.toString());
+        return leaveService.ApplyLeave(model);
     }
+
     @PostMapping("/all-leave")
     public List<LeaveModel> getAllLeaves(@RequestBody EmployeeModel employee) {
-        // Call the service method to fetch leaves for the given employeeId
-    	String employeeId =String.valueOf(employee.getEmployeeId());
-    	System.out.println();
+        String employeeId = String.valueOf(employee.getEmployeeId());
+        System.out.println();
         return leaveService.allLeaves(employeeId);
     }
+
     @DeleteMapping("/delete-leave")
     public boolean deleteLeave(@RequestParam Long leaveId) {
         try {
-        	String leaveIds=String.valueOf(leaveId);
-            leaveService.deleteLeave(leaveIds);  // Attempt to delete the leave record
-            return true;  // Return true if deletion is successful
+            String leaveIds = String.valueOf(leaveId);
+            leaveService.deleteLeave(leaveIds);
+            return true;
         } catch (Exception e) {
-            e.printStackTrace();  // Log the exception if there's an error
-            return false;  // Return false if an error occurs
+            e.printStackTrace();
+            return false;
         }
     } 
 }
