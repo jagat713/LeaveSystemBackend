@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dao.LeaveService;
 import com.example.demo.model.LeaveModel;
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class TeamLeaderController {
     @Autowired
     private LeaveService leaveService;

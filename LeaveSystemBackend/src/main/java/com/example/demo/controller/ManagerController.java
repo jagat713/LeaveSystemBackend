@@ -17,7 +17,7 @@ import com.example.demo.model.EmployeeModel;
 import com.example.demo.model.LeaveModel;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class ManagerController {
     @Autowired
     private LeaveService leaveService;
