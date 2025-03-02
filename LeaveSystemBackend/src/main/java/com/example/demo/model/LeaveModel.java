@@ -15,8 +15,22 @@ public class LeaveModel {
 
     @Column(name = "leave_type")
     private String leaveType;
+    
+    @Column(name="leave_time")
+    private String leaveTime;
+    
+    @Column(name="leave_date")
+    private String leaveDate;
 
-    @Column(name = "leave_start")
+    public String getLeaveDate() {
+		return leaveDate;
+	}
+
+	public void setLeaveDate(String leaveDate) {
+		this.leaveDate = leaveDate;
+	}
+
+	@Column(name = "leave_start")
     private String leaveStart;
 
     @Column(name = "leave_end")
@@ -37,15 +51,19 @@ public class LeaveModel {
     @Column(name = "leave_status", nullable = false, columnDefinition = "VARCHAR(45) DEFAULT 'Pending'")
     private String leaveStatus;
 
-    public LeaveModel() {
-        super();
-    }
+	public LeaveModel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-	public LeaveModel(long leaveId, String leaveType, String leaveStart, String leaveEnd, String leaveReason,
-			String leaveEmployeeName, String leaveEmployeeId, String teamLeaderId, String leaveStatus) {
+	public LeaveModel(long leaveId, String leaveType, String leaveTime, String leaveDate, String leaveStart,
+			String leaveEnd, String leaveReason, String leaveEmployeeName, String leaveEmployeeId, String teamLeaderId,
+			String leaveStatus) {
 		super();
 		this.leaveId = leaveId;
 		this.leaveType = leaveType;
+		this.leaveTime = leaveTime;
+		this.leaveDate = leaveDate;
 		this.leaveStart = leaveStart;
 		this.leaveEnd = leaveEnd;
 		this.leaveReason = leaveReason;
@@ -69,6 +87,14 @@ public class LeaveModel {
 
 	public void setLeaveType(String leaveType) {
 		this.leaveType = leaveType;
+	}
+
+	public String getLeaveTime() {
+		return leaveTime;
+	}
+
+	public void setLeaveTime(String leaveTime) {
+		this.leaveTime = leaveTime;
 	}
 
 	public String getLeaveStart() {
@@ -129,10 +155,10 @@ public class LeaveModel {
 
 	@Override
 	public String toString() {
-		return "LeaveModel [leaveId=" + leaveId + ", leaveType=" + leaveType + ", leaveStart=" + leaveStart
-				+ ", leaveEnd=" + leaveEnd + ", leaveReason=" + leaveReason + ", leaveEmployeeName=" + leaveEmployeeName
-				+ ", leaveEmployeeId=" + leaveEmployeeId + ", teamLeaderId=" + teamLeaderId + ", leaveStatus="
-				+ leaveStatus + "]";
+		return "LeaveModel [leaveId=" + leaveId + ", leaveType=" + leaveType + ", leaveTime=" + leaveTime
+				+ ", leaveDate=" + leaveDate + ", leaveStart=" + leaveStart + ", leaveEnd=" + leaveEnd
+				+ ", leaveReason=" + leaveReason + ", leaveEmployeeName=" + leaveEmployeeName + ", leaveEmployeeId="
+				+ leaveEmployeeId + ", teamLeaderId=" + teamLeaderId + ", leaveStatus=" + leaveStatus + "]";
 	}
     
     

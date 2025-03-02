@@ -22,13 +22,50 @@ public class LeaveService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+//    public Boolean ApplyLeave(LeaveModel model) {
+//        Boolean status = false;
+//        try {
+//        	if (model.getLeaveStatus() == null) {
+//        	    model.setLeaveStatus("Pending");
+//        	}
+//        	System.out.println("debugggin"+model);
+//            leaveRepository.save(model);
+//            status = true;  
+//        } catch (Exception e) {
+//            e.printStackTrace(); 
+//        }
+//        return status;
+//    }
+    
+    
+    
     public Boolean ApplyLeave(LeaveModel model) {
         Boolean status = false;
         try {
-        	if (model.getLeaveStatus() == null) {
-        	    model.setLeaveStatus("Pending");
-        	}
-        	System.out.println("debugggin"+model);
+            if (model.getLeaveStatus() == null) {
+                model.setLeaveStatus("Pending");
+            }
+            
+            // Ensure leaveSubmissionDate is set
+            if (model.getLeaveDate() == null || model.getLeaveDate().isEmpty()) {
+                model.setLeaveDate(java.time.LocalDate.now().toString()); // YYYY-MM-DD
+            }
+            
+            // Ensure leaveTime is set and formatted correctly
+            if (model.getLeaveTime() == null || model.getLeaveTime().isEmpty()) {
+                model.setLeaveTime(java.time.LocalTime.now().format(java.time.format.DateTimeFormatter.ofPattern("HH:mm")));
+            } else {
+                try {
+                    // Convert existing time to HH:mm format (if provided)
+                    model.setLeaveTime(java.time.LocalTime.parse(model.getLeaveTime())
+                            .format(java.time.format.DateTimeFormatter.ofPattern("HH:mm")));
+                } catch (Exception e) {
+                    System.out.println("Error parsing leaveTime: " + e.getMessage());
+                    model.setLeaveTime(java.time.LocalTime.now().format(java.time.format.DateTimeFormatter.ofPattern("HH:mm")));
+                }
+            }
+
+            System.out.println("Debugging Before Save: " + model);
             leaveRepository.save(model);
             status = true;  
         } catch (Exception e) {
@@ -36,6 +73,8 @@ public class LeaveService {
         }
         return status;
     }
+
+
     public List<LeaveModel> allLeaves(String employeeId) {
         try {
         	System.out.println(leaveRepository.findByLeaveEmployeeId(employeeId));
